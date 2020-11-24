@@ -65,11 +65,7 @@ export class SchedulerRegistry {
   }
 
   deleteCronJob(name: string) {
-    if (this.hasCronJob(name)) {
-      const cronJob = this.getCronJob(name);
-      cronJob.stop();
-      this.cronJobs.delete(name);
-    }
+    this.cronJobs.delete(name);
   }
 
   getIntervals(): string[] {
@@ -81,11 +77,7 @@ export class SchedulerRegistry {
   }
 
   deleteInterval(name: string) {
-    if (this.hasInterval(name)) {
-      const interval = this.getInterval(name);
-      clearInterval(interval);
-      this.intervals.delete(name);
-    }
+    this.intervals.delete(name);
   }
 
   getTimeouts(): string[] {
@@ -97,10 +89,6 @@ export class SchedulerRegistry {
   }
 
   deleteTimeout(name: string) {
-    if (this.hasTimeout(name)) {
-      const timeout = this.getTimeout(name);
-      clearTimeout(timeout);
-      this.timeouts.delete(name);
-    }
+    this.timeouts.delete(name);
   }
 }
